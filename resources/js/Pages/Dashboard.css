@@ -22,10 +22,24 @@
     flex-wrap: wrap;
 }
 
-h1{
-	font-size: 32px;
-	text-transform: uppercase;
-	font-weight: 800;
+.manufacturers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Optional: Adjust space between manufacturers */
+}
+
+.manufacturer-item {
+    background-color: #e5e7eb;
+    padding: 10px;
+    border-radius: 5px;
+    flex: 1 1 200px; /* Optional: Allows manufacturers to grow/shrink and ensures a minimum width */
+    text-align: center;
+}
+
+h1 {
+    font-size: 32px;
+    text-transform: uppercase;
+    font-weight: 800;
 }
 
 footer {
