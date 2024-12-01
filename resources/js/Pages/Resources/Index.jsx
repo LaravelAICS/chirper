@@ -13,6 +13,8 @@ export default function Index() {
     const [currentResourceId, setCurrentResourceId] = useState(null);
     const [searchQuery, setSearchQuery] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
+    const [detailsModalVisible, setDetailsModalVisible] = useState(false); // Track details modal visibility
+    const [currentResourceDetails, setCurrentResourceDetails] = useState(null); // Store the selected resource details
     const itemsPerPage = 5;
 
     const handleCreate = (e) => {
@@ -50,7 +52,8 @@ export default function Index() {
         setCurrentResourceId(null);
     };
 
-    const handleEdit = (resource) => {
+    const handleEdit = (resource, e) => {
+        e.stopPropagation(); // Prevent the event from propagating and triggering the modal overlay
         setFormData({
             name: resource.name,
             type: resource.type,
@@ -75,7 +78,8 @@ export default function Index() {
         }
     };
 
-    const handleDelete = (id) => {
+    const handleDelete = (id, e) => {
+        e.stopPropagation(); // Prevent the event from propagating and triggering the modal overlay
         Inertia.delete(route('resources.destroy', id));
     };
 
@@ -108,6 +112,16 @@ export default function Index() {
         const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
         const date = new Date(dateString);
         return date.toLocaleDateString(undefined, options);
+    };
+
+    const openDetailsModal = (resource) => {
+        setCurrentResourceDetails(resource);
+        setDetailsModalVisible(true);
+    };
+
+    const closeDetailsModal = () => {
+        setDetailsModalVisible(false);
+        setCurrentResourceDetails(null);
     };
 
     return (
@@ -168,6 +182,30 @@ export default function Index() {
                     </div>
                 )}
 
+                {detailsModalVisible && currentResourceDetails && (
+                    <div className="modal-overlay" onClick={handleModalClick}>
+                        <div className="modal-content">
+                            {/* Image Section */}
+                            <div className="modal-image">
+                                <img src={currentResourceDetails.image_url || '/default-image.png'} alt="Resource" />
+                            </div>
+
+                            {/* Text Section */}
+                            <div className="modal-text">
+                                <div><strong>Bike Part Name:</strong> {currentResourceDetails.name}</div>
+                                <div><strong>Type:</strong> {currentResourceDetails.type}</div>
+                                <div><strong>Description:</strong> {currentResourceDetails.description}</div>
+                                <div><strong>Date Created:</strong> {formatDate(currentResourceDetails.created_at)}</div>
+                            </div>
+                        </div>
+                        
+                        {/* Close Button (Outside Image/Text Section) */}
+                        <div className="modal-buttons">
+                            <button className="close-details" onClick={closeDetailsModal}>Close</button>
+                        </div>
+                    </div>
+                )}
+
                 <table>
                     <thead>
                         <tr>
@@ -181,7 +219,7 @@ export default function Index() {
                     </thead>
                     <tbody>
                         {displayedResources.map(resource => (
-                            <tr key={resource.id}>
+                            <tr key={resource.id} onClick={() => openDetailsModal(resource)}>
                                 <td>{resource.name}</td>
                                 <td>{resource.type}</td>
                                 <td>{resource.description}</td>
@@ -193,8 +231,8 @@ export default function Index() {
                                 </td>
                                 <td>
                                     <div className="button-container">
-                                        <button className="edit" onClick={() => handleEdit(resource)}>Edit</button>
-                                        <button className="delete" onClick={() => handleDelete(resource.id)}>Delete</button>
+                                        <button className="edit" onClick={(e) => handleEdit(resource, e)}>Edit</button>
+                                        <button className="delete" onClick={(e) => handleDelete(resource.id, e)}>Delete</button>
                                     </div>
                                 </td>
                             </tr>
@@ -203,13 +241,9 @@ export default function Index() {
                 </table>
 
                 <div className="pagination">
-                    <button onClick={prevPage} disabled={currentPage === 1}>
-                        &larr; Previous
-                    </button>
+                    <button onClick={prevPage} disabled={currentPage === 1}>Previous</button>
                     <span>Page {currentPage} of {totalPages}</span>
-                    <button onClick={nextPage} disabled={currentPage === totalPages}>
-                        Next &rarr;
-                    </button>
+                    <button onClick={nextPage} disabled={currentPage === totalPages}>Next</button>
                 </div>
             </div>
         </AuthenticatedLayout>

@@ -27,6 +27,7 @@ export default function Dashboard() {
             </div>
 
             <div className="body">
+                <h3 classname="manufacturer-names">Manufacturers included in this website</h3>
                 <div className="manufacturers">
                     <div className="manufacturer-item">Shimano</div>
                     <div className="manufacturer-item">Magura</div>

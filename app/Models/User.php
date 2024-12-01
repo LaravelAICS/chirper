@@ -20,7 +20,19 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'profile_image', // New field
     ];
+    
+
+    protected $appends = ['image_url'];
+
+    public function getImageUrlAttribute()
+    {
+        return $this->profile_image 
+            ? asset('storage/' . $this->profile_image) 
+            : asset('images/default-profile.png');
+    }
+
 
     /**
      * The attributes that should be hidden for serialization.
