@@ -263,7 +263,6 @@ export default function Dashboard() {
                     </section>
 
 
-
                 {/* Footer */}
                 <footer className="footer">
                     <div className="footer-content">
