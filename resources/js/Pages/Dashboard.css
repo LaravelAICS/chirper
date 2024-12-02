@@ -234,7 +234,6 @@
     text-align: center;
     margin-bottom: 20px;
 }
-
 .header-underline {
     width: 200px;
     height: 4px;
@@ -242,7 +241,6 @@
     margin: 10px auto;
     border-radius: 50px;
 }
-
 /* Content Inside the Intro Section */
 .intro-content {
     color: #002b45;
@@ -252,7 +250,6 @@
     font-size: 1.2rem;
     line-height: 1.8;
 }
-
 .intro-content p {
     margin-bottom: 20px;
 }
@@ -268,7 +265,6 @@
     transform: translateY(-5px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
-
 .feature-card {
     background: #ffffff;
     border-radius: 10px;
@@ -286,7 +282,6 @@
     align-items: center; /* Horizontal centering of content */
      box-shadow: 5px 10px #888888;
 }
-
 .feature-card img {
     width: 80px;
     height: 80px;
@@ -315,3 +310,10 @@
         max-width: 100%;
     }
 }
+
+
+
+
+
+
+

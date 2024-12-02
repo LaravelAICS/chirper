@@ -87,36 +87,38 @@ export default function Dashboard() {
                 </section>
 
                 <div className="container-main">
-    <section className="intro-section">
-        <div className="intro-header">
-            <h1>Welcome to Bike Parts Classification Webpage</h1>
-            <div className="header-underline"></div>
-        </div>
+                        <section className="intro-section">
+                            <div className="intro-header">
+                                <h1>Welcome to Bike Parts Classification Webpage</h1>
+                                <div className="header-underline"></div>
+                            </div>
 
-        <div className="intro-content">
-            <p>
-                Bike parts classification plays a vital role in cycling, influencing performance, comfort, and overall experience. Each component is designed to enhance bike efficiency and help riders navigate various terrains.
-            </p>
-            <div className="feature-cards">
-                <div className="feature-card">
-                    <img src="/images/suspension.jpg" alt="Suspension Forks" />
-                    <h3>Suspension Forks</h3>
-                    <p>Absorb shocks and smooth out rough trails, providing better control during rugged rides.</p>
-                </div>
-                <div className="feature-card">
-                    <img src="/images/group.jpg" alt="Groupset" />
-                    <h3>Groupset</h3>
-                    <p>Essential for smooth and efficient shifting, contributing to the overall performance of the bike.</p>
-                </div>
-                <div className="feature-card">
-                    <img src="/images/brake.jpg" alt="Braking Systems" />
-                    <h3>Braking Systems</h3>
-                    <p>Hydraulic brakes offer exceptional stopping power and control, ensuring rider safety.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
+                            <div className="intro-content">
+                                <p>
+                                    Bike parts classification plays a vital role in cycling, influencing performance, comfort, and overall experience. Each component is designed to enhance bike efficiency and help riders navigate various terrains.
+                                </p>
+                                <div className="feature-cards">
+                                    <div className="feature-card">
+                                        <img src="/images/suspension.jpg" alt="Suspension Forks" />
+                                        <h3>Suspension Forks</h3>
+                                        <p>Absorb shocks and smooth out rough trails, providing better control during rugged rides.</p>
+                                    </div>
+                                    <div className="feature-card">
+                                        <img src="/images/group.jpg" alt="Groupset" />
+                                        <h3>Groupset</h3>
+                                        <p>Essential for smooth and efficient shifting, contributing to the overall performance of the bike.</p>
+                                    </div>
+                                    <div className="feature-card">
+                                        <img src="/images/brake.jpg" alt="Braking Systems" />
+                                        <h3>Braking Systems</h3>
+                                        <p>Hydraulic brakes offer exceptional stopping power and control, ensuring rider safety.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+
 
 
 
@@ -259,6 +261,7 @@ export default function Dashboard() {
                             ))}
                         </div>
                     </section>
+
 
 
                 {/* Footer */}
